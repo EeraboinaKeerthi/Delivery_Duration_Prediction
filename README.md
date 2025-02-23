@@ -22,8 +22,12 @@ Dropping Unnecessary Columns: Columns that are not required for model evaluation
 
 Feature Engineering:
 
-
-
+New features were created to improve model performance.
+A new feature busy_dashers_ratio is computed.This captures how occupied dashers are at the time of order placement, which can impact delivery time.
+A new feature estimated_non_prep_duration is created.This estimates the total time taken outside of food preparation, helping the model understand how long travel & order placement take.
+Encoding categorical features : One-hot encoded order_protocol, market_id, store_primary_category.
+The original dataset is concatenated with the encoded categorical features.
+The entire dataset is converted to float32.This helps in reducing memory usage and ensuring consistent numerical types.
 
 
 
