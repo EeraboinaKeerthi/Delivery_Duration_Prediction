@@ -117,5 +117,27 @@ Trains each model on the dataset with corresponding feature selection and scalin
 Stores RMSE results for comparison.
 Stores results in pred_dict for later comparison.
 
- 
+
+Evaluate Model and Results:
+The primary metric used for evaluation is Root Mean Squared Error (RMSE).
+RMSE measures how far predictions are from actual values in terms of seconds.
+Lower RMSE is better.
+RMSE penalizes large errors more heavily, making it a good metric for time-sensitive predictions like delivery time.
+
+
+Observations:
+XGBoost & LGBM consistently outperform other models.
+Feature selection helps but doesn’t drastically improve results.
+Scaling is essential for MLP but has minimal effect on tree-based models.
+Random Forest showed overfitting and needs hyperparameter tuning.
+
+
+Fine Tuning:
+Fine-tune hyperparameters for LGBM and XGBoost (Grid Search, Bayesian Optimization).
+Reduce overfitting in Random Forest (increase regularization, limit tree depth).
+Test ensemble models (combine LGBM and XGBoost for better predictions).
+Analyze which features contribute most to error.
+Try deep learning models with better tuning to see if performance improves.
+
+
 
