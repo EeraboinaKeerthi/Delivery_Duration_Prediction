@@ -55,6 +55,17 @@ Improves Model Interpretability
 Highly correlated features make it hard to understand which feature is impacting the target.
 Removing redundancy improves clarity.
 
-
+Multicollinearity Check:
+Detecting and Removing Multicollinearity using Variance Inflation Factor (VIF).
+Variance Inflation Factor (VIF) is a statistical measure used to detect multicollinearity in a dataset. Multicollinearity occurs when independent variables (features) are highly correlated, making it difficult for a machine learning model to distinguish their individual effects on the target variable.
+Why is VIF Important?
+Improves Model Interpretability: If features are highly correlated, it’s difficult to determine their true effect on the target variable.
+Reduces Overfitting: Multicollinearity increases model complexity, leading to overfitting.
+Enhances Model Stability: High correlation between independent variables causes unstable coefficients in regression models.
+If VIF > 20, it should be removed to prevent multicollinearity.
+The function calculates VIF for each feature and returns a sorted table.
+Finding the feature with the highest VIF and remove it iteratively.
+Recompute VIF scores and continue removing features until all features have VIF ≤ 20.
+Final list of selected features is stored in selected_features.The feature percent_distinct_item_of_total was found to have high VIF and was dropped.
 
 
