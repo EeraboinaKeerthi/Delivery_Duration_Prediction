@@ -13,6 +13,25 @@ Input Features (X): Includes store details, order characteristics, market condit
 Target Variable (y): Total delivery duration in seconds.
 Machine learning model should be trained on historical delivery data to identify patterns and predict the time required for future deliveries.
 
+Collect and Label Data:
+
+This step involves reading and transforming raw data into a structured format.
+The dataset is read from "historical_data.csv".
+Timestamps (created_at and actual_delivery_time) are converted to datetime format.
+The target variable actual_total_delivery_duration is created by calculating the time difference in seconds.
+
+Evaluate Data (Data Preprocessing):
+
+Checking unique values in categorical columns:
+Before encoding, the uniqueness of categorical variables was checked, to know if categorical columns should be one-hot encoded or if they contain too many unique values.
+Helps in identifying categorical features that may need grouping or treatment for missing values.
+Handling Missing values:
+Identifying missing values in store_primary_category field and missing values were imputed with mode value.
+Dropping Unnecessary Columns:
+Columns that are not required for model evaluation are removed.
+Replacing infinite values occured due to division errors with Nans and dropping them.
+
+Feature Engineering:
 
 
 
