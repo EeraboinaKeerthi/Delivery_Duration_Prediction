@@ -78,3 +78,44 @@ PCA (Principal Component Analysis) is used to check whether dimensionality reduc
 The dataset is standardized using StandardScaler() (PCA requires normalized data).
 Cumulative variance is plotted, showing how many principal components are needed to explain 80% of the dataset.If PCA can explain most of the variance with fewer features, we might drop additional features.However, PCA shows that at least 60 components are needed, meaning feature selection based on importance is better than PCA here.PCA shows that we need to use at least 60 representative features to explain 80% of the dataset, which makes the PCA transformation useless since we already have 80 and could select the most important ones based on feature importance. However, if PCA would tell us it can explain the majority of variance with around 10 features - high reduction - we would continue with it.PCA doesn’t provide significant dimensionality reduction.Using top 35 features from feature importance, NOT PCA
 
+
+Select and Train Model:
+
+Define a Generic Function to Train Any Regression Model:
+A generic function to train any regression model (model) and compute RMSE.
+The function trains the model, makes predictions on training and test sets, and calculates RMSE.
+The verbose flag controls whether the function prints results.
+Six different regression models are defined:
+Ridge Regression
+Decision Tree
+Random Forest
+XGBoost
+LightGBM (LGBM)
+MLP (Multi-Layer Perceptron - Neural Network)
+Define Different Feature Sets:
+Four feature sets are created:
+Full Dataset → Uses all features.
+Top 40 Features → Selected based on feature importance.
+Top 20 Features → Only the most relevant features.
+Top 10 Features → The smallest feature subset.
+Define Different Scaling Methods
+Three different scaling methods:
+StandardScaler() → Normalizes data to mean=0, variance=1.
+MinMaxScaler() → Scales data between 0 and 1.
+NotScale → No scaling applied.
+
+Define a Function to Train and Evaluate a Model
+Trains the given model using model.fit(X_train, y_train).
+Computes RMSE for both training and test data.
+Prints error values for evaluation.
+Train Models Across Feature Sets and Scalers
+Loop Through All Feature Sets, Scalers, and Models
+Iterates over different feature sets (full dataset, top 40, 20, 10 features).
+Iterates over different scaling techniques (StandardScaler, MinMaxScaler, No Scaling).
+Iterates over multiple regression models (Ridge, Decision Tree, Random Forest, XGBoost, LGBM, MLP).
+Trains each model on the dataset with corresponding feature selection and scaling.
+Stores RMSE results for comparison.
+Stores results in pred_dict for later comparison.
+
+ 
+
