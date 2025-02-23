@@ -68,4 +68,8 @@ Finding the feature with the highest VIF and remove it iteratively.
 Recompute VIF scores and continue removing features until all features have VIF ≤ 20.
 Final list of selected features is stored in selected_features.The feature percent_distinct_item_of_total was found to have high VIF and was dropped.
 
+Feature Selection using Random Forest Importance: We determine the most influential features using Random Forest.
+A Random Forest model is trained to predict delivery duration.
+Feature importance is extracted using Gini importance (how much each feature reduces uncertainty in predictions).
+The most important features are plotted.This helps select only the most relevant features for the model.Extracts and plots the top 35 most important features.
 
