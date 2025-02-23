@@ -28,6 +28,33 @@ A new feature estimated_non_prep_duration is created.This estimates the total ti
 Encoding categorical features : One-hot encoded order_protocol, market_id, store_primary_category.
 The original dataset is concatenated with the encoded categorical features.
 The entire dataset is converted to float32.This helps in reducing memory usage and ensuring consistent numerical types.
+Feature Selection and Redundancy handling:
+Identifying redundant and collinear features:
+A correlation matrix is calculated for all numerical features in train_df.
+mask = np.triu(np.ones_like(corr, dtype=bool)) is used to hide the upper triangle, since correlation matrices are symmetric (i.e., correlation of A with B is the same as B with A).
+Used Seaborn’s heatmap to visualize correlations, it helps identify highly correlated features, which might introduce multicollinearity in ML models.
+Dropping highly correlated features:
+total_onshift_dashers and total_busy_dashers are highly correlated.
+category_indonesian has a zero standard deviation (all values are the same), making it useless.
+estimated_non_prep_duration might be redundant as it's a sum of other features.
+Creating percent_distinct_item_of_total,measures diversity in the order by computing the percentage of distinct items in the total order.Creating avg_price_per_item,Computes average price per item in an order, helps capture the pricing structure across orders.
+Checks final correlations to ensure that redundant features are removed.
+
+Why is the Correlation Matrix Important?
+Identifies Redundant Features
+If two features are highly correlated (|correlation| > 0.9), one might be unnecessary.
+Example: If total_onshift_dashers and total_busy_dashers are highly correlated, we can remove one.
+Reduces Multicollinearity
+Multicollinearity occurs when independent variables in a regression model are too correlated.
+This can make ML models unstable and less interpretable.
+Dropping one of the correlated features improves performance.
+Helps Feature Selection
+If a feature has low correlation (near 0) with the target variable, it might be irrelevant.
+We can remove weakly correlated features to simplify the model.
+Improves Model Interpretability
+Highly correlated features make it hard to understand which feature is impacting the target.
+Removing redundancy improves clarity.
+
 
 
 
