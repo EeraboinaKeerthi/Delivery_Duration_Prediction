@@ -1,9 +1,11 @@
 # Delivery_Duration_Prediction
-Business Problem: 
+Business Problem:
+
 Predicting Delivery Duration for Better Customer Experience
 DoorDash aims to provide accurate estimated delivery times to improve customer satisfaction and operational efficiency. Incorrect delivery time predictions can lead to negative customer experiences, reduced customer retention, and increased costs due to inefficiencies in order fulfillment.
 
 Problem Formulation(Machine Learning Problem):
+
 This is a supervised regression problem where the goal is to predict a continuous target variable—the total delivery duration (in seconds). 
 y = actual_delivery_time - created_at
 where:
