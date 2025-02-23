@@ -73,3 +73,8 @@ A Random Forest model is trained to predict delivery duration.
 Feature importance is extracted using Gini importance (how much each feature reduces uncertainty in predictions).
 The most important features are plotted.This helps select only the most relevant features for the model.Extracts and plots the top 35 most important features.
 
+Principal Component Analysis (PCA) for Dimensionality Reduction:
+PCA (Principal Component Analysis) is used to check whether dimensionality reduction is useful.
+The dataset is standardized using StandardScaler() (PCA requires normalized data).
+Cumulative variance is plotted, showing how many principal components are needed to explain 80% of the dataset.If PCA can explain most of the variance with fewer features, we might drop additional features.However, PCA shows that at least 60 components are needed, meaning feature selection based on importance is better than PCA here.PCA shows that we need to use at least 60 representative features to explain 80% of the dataset, which makes the PCA transformation useless since we already have 80 and could select the most important ones based on feature importance. However, if PCA would tell us it can explain the majority of variance with around 10 features - high reduction - we would continue with it.PCA doesn’t provide significant dimensionality reduction.Using top 35 features from feature importance, NOT PCA
+
