@@ -131,6 +131,14 @@ Feature selection helps but doesn’t drastically improve results.
 Scaling is essential for MLP but has minimal effect on tree-based models.
 Random Forest showed overfitting and needs hyperparameter tuning.
 
+Conclusions:
+Best RMSE is 2033 sec (~34 minutes).
+A 34-minute average error is too high → Many deliveries could be late by 30-40 minutes.
+Customers expect 5-10 min accuracy, not 30+ min delays.
+Conclusion: The model does not fully meet business goals because RMSE is too high.
+RMSE should be below ~900-1200 seconds (15-20 minutes) for practical use.
+If the model is consistently off by 30+ minutes, customers will lose trust in ETAs.
+
 
 Fine Tuning:
 Fine-tune hyperparameters for LGBM and XGBoost (Grid Search, Bayesian Optimization).
@@ -138,6 +146,21 @@ Reduce overfitting in Random Forest (increase regularization, limit tree depth).
 Test ensemble models (combine LGBM and XGBoost for better predictions).
 Analyze which features contribute most to error.
 Try deep learning models with better tuning to see if performance improves.
+
+Fine tuning 1:
+Changing the Target Variable (Reframing the Problem):
+Instead of predicting the total delivery duration,if the model predicts food preparation time:
+
+Observations:
+
+LGBM still has the lowest RMSE (2035 sec), showing it remains the best model.
+XGBoost slightly improved but is still behind LGBM.
+Random Forest improved a little but still overfits.
+Decision Tree performed worse, likely due to dropping features.
+MLP did not improve significantly, suggesting neural networks are not optimal for this problem.
+
+Reframing the problem (predicting prep time instead of total time) helped a bit but didn’t drastically lower RMSE.RMSE (2035 sec) is still too high for practical use
+Further improvements are needed.
 
 
 
